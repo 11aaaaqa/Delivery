@@ -1,0 +1,20 @@
+﻿@model Delivery.Models.Roles.AssignRoleViewModel
+    <link rel="stylesheet" href="~/css/Button.css" />
+<div>
+    <h2>Назначить роль</h2>
+    <form method="post" asp-action="AssignRole" asp-controller="Administration">
+        <div asp-validation-summary="All"></div>
+
+        <div>
+            <label asp-for="UserName"></label> <br />
+            <input asp-for="UserName" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+        <div>
+            <label asp-for="RoleName"></label> <br />
+            <input asp-for="RoleName" />
+            <span asp-validation-for="RoleName"></span>
+        </div>
+        <br/><input type="submit" class="btn" value="назначить" />
+    </form>
+</div>

@@ -1,0 +1,19 @@
+﻿@using System.Text
+@model IOrderedEnumerable<Delivery.Models.History.OrdersHistory>
+<link rel="stylesheet" href="~/css/HighlightDiv.css" />
+<div class="highlight">
+    @foreach (var orders in Model)
+    {
+        StringBuilder builder = new StringBuilder();
+        foreach (var products in orders.ProductsNames)
+        {
+            builder.Append(products);
+            builder.Append(", ");
+        }
+        builder.Length -= 2;
+        <h5>@builder.ToString()</h5>
+        <h6>Адрес: @orders.Address</h6>
+        <h6>Дата: @orders.Date</h6>
+        <h6>Стоимость: @orders.Amount руб</h6><br/>
+    }
+</div>

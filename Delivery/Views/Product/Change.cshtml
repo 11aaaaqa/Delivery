@@ -1,0 +1,29 @@
+﻿@model Delivery.Models.Product.Products
+    <link rel="stylesheet" href="~/css/Button.css" />
+<div>
+    <h2>Редактировать продукт</h2>
+    <form method="post" asp-controller="Product" asp-action="Change">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="ProductName"></label><br />
+            <input asp-for="ProductName" />
+            <span asp-validation-for="ProductName"></span>
+        </div>
+        <div>
+            <label asp-for="Price"></label><br />
+            <input asp-for="Price" />
+            <span asp-validation-for="Price"></span>
+        </div>
+        <div>
+            <label asp-for="ExpirationDate"></label><br />
+            <input asp-for="ExpirationDate" />
+            <span asp-validation-for="ExpirationDate"></span>
+        </div>
+        <div>
+            <label asp-for="Manufacturer"></label><br />
+            <input asp-for="Manufacturer" />
+            <span asp-validation-for="Manufacturer"></span>
+        </div>
+        <input type="submit" class="btn" value="изменить" />
+    </form>
+</div>

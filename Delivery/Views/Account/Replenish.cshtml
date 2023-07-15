@@ -1,0 +1,16 @@
+﻿@model Delivery.Models.Replenish.ReplenishViewModel
+<link rel="stylesheet" href="~/css/Button.css" />
+<link rel="stylesheet" href="~/css/Login.css" />
+<div>
+    <h3>Пополнить счет</h3>
+    <form method="post" asp-action="Replenish" asp-controller="Account" asp-route-returnUrl="@ViewBag.returnUrl">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Amount"></label><br/>
+            <input class="inpt" asp-for="Amount"/>
+            <span asp-validation-for="Amount"></span>
+        </div>
+        <br/><input type="submit" class="btn" value="пополнить"/>
+    </form>
+
+</div>

@@ -1,0 +1,20 @@
+﻿@model Delivery.Models.Reg.User
+<link rel="stylesheet" href="~/css/Login.css" />
+<link rel="stylesheet" href="~/css/Button.css" />
+<div>
+    <h3>Выбрать адрес</h3>
+    <form method="post" asp-controller="Delivery" asp-action="Address" asp-route-returnUrl="@ViewBag.returnUrl">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="City"></label> <br />
+            <input class="inpt" asp-for="City" />
+            <span asp-validation-for="City"></span>
+        </div>
+        <div>
+            <label asp-for="Address"></label><br/>
+            <input class="inpt" asp-for="Address"/>
+            <span asp-validation-for="Address"></span>
+        </div>
+        <br/><input type="submit" class="btn" value="подтвердить"/>
+    </form>
+</div>

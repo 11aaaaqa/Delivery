@@ -1,0 +1,24 @@
+﻿@model Delivery.Models.Reg.Login
+<link rel="stylesheet" href="~/css/Login.css" />
+<div class="form-center">
+    <h2>Войти в аккаунт</h2><br/>
+    <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="UserName"></label><br />
+            <input class="inpt" asp-for="UserName" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+        
+        <div>
+            <label asp-for="Password"></label><br />
+            <input class="inpt" asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label asp-for="RememberMe"></label><br />
+            <input asp-for="RememberMe" />
+        </div>
+        <input type="submit" class="btn" value="Войти"/>
+    </form>
+</div>

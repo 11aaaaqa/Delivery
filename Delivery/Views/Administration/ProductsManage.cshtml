@@ -1,0 +1,20 @@
+﻿@using Delivery.Models.Product
+@model IQueryable<Products>
+<link rel="stylesheet" href="~/css/GreenButton3.css" />
+<link rel="stylesheet" href="~/css/Button.css" />
+<div>
+    @foreach (Products prod in Model)
+    {
+        <h3>@prod.ProductName</h3>
+        <h4>Цена: @prod.Price руб</h4>
+        <h6>Срок годности: @prod.ExpirationDate</h6>
+        <h6>Производитель: @prod.Manufacturer</h6>
+        <form method="post" asp-controller="Product" asp-action="Delete" onclick="if (confirm('Удалить @prod.ProductName?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+            <input type="hidden" name="id" value="@prod.Id" />
+            <input type="submit" class="btn" value="удалить" />
+        </form>
+        <a asp-controller="Product" asp-action="Change" asp-route-id="@prod.Id">редактировать</a><br/>
+    }
+    <br/><a class="green2" asp-controller="Product" asp-action="Create">добавить</a><br/><br/>
+    
+</div>

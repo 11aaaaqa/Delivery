@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Delivery</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/divContainerRight.css" />
+    <link rel="stylesheet" href="~/css/LogoutButton.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-action="Products" asp-controller="Product">Delivery</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Delivery" asp-action="Cart">корзина</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Orders">история заказов</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Deposits">история пополнений</a>
+                        </li>
+                        @if (User.IsInRole("Администратор") || User.IsInRole("Гл Админ") || User.IsInRole("Модератор"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="Admins">админ панель</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Delivery" asp-action="Address" asp-route-returnUrl="@Context.Request.Path">выбрать адрес</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Replenish" asp-route-returnUrl="@Context.Request.Path">пополнить счет</a>
+                    @*<div class="divContainerRight">*@
+                        <form method="post" asp-controller="Account" asp-action="Logout">
+                            <input type="submit" class="butn" value="выйти" />
+                        </form>
+                    @*</div>*@
+                }
+                else
+                {
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">войти</a>
+                    <div class="divContainerRight">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">зарегистрироваться</a>
+                    </div>
+                }
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Delivery - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

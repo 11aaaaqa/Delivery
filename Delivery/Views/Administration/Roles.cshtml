@@ -1,0 +1,13 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+<link rel="stylesheet" href="~/css/GreenButton.css" />
+<div>
+    <h2>Все роли</h2>
+    @foreach (var roles in Model)
+    {
+        <p>@roles.Name</p>
+    }
+
+    <a class="green" asp-controller="Administration" asp-action="CreateRole">создать новую роль</a>
+    <a class="green" asp-controller="Administration" asp-action="AssignRole">назначить роль</a>
+
+</div>

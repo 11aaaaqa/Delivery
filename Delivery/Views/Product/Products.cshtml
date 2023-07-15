@@ -1,0 +1,20 @@
+﻿@using Delivery.Models.Product
+@model IQueryable<Products>
+<link rel="stylesheet" href="~/css/Button.css" />
+<link rel="stylesheet" href="~/css/HighlightDiv.css"/>
+<div>
+    @foreach (Products prod in Model)
+    {
+        <h3>@prod.ProductName</h3>
+        <h4>Цена: @prod.Price руб</h4>
+        <h6>Срок годности: @prod.ExpirationDate</h6>
+        <h6>Производитель: @prod.Manufacturer</h6>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form method="post" asp-controller="Delivery" asp-action="AddToCart">
+                <input type="hidden" name="id" value="@prod.Id" />
+                <input type="submit" class="btn" value="добавить в корзину" />
+            </form>
+        }<br/>
+    }
+</div>

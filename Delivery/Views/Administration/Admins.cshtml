@@ -1,0 +1,34 @@
+﻿<link rel="stylesheet" href="~/css/GreenButton.css" />
+<link rel="stylesheet" href="~/css/Button.css" />
+<link rel="stylesheet" href="~/css/HighlightDiv.css" />
+@model Delivery.Models.Roles.AdminsViewModel
+<div class="highlight">
+
+    @foreach (var mainAdmin in Model.MainAdmins)
+    {
+        <p>@mainAdmin  Гл Админ</p>
+        <form method="post" asp-controller="Administration" asp-action="RemoveRoles" asp-route-id="@mainAdmin.Id">
+            <input type="submit" class="btn" value="удалить" onclick="if (confirm('Снять роли пользователя @mainAdmin.UserName?')) { return true;} else{event.stopPropagation(); event.preventDefault();};"/>
+        </form><br />
+    }
+
+    @foreach (var admin in Model.Admins)
+    {
+        <p>@admin  Администратор</p>
+        <form method="post" asp-controller="Administration" asp-action="RemoveRoles" asp-route-id="@admin.Id">
+            <input type="submit" class="btn" value="удалить" onclick="if (confirm('Снять роли пользователя @admin.UserName?')) { return true;} else{event.stopPropagation(); event.preventDefault();};"/>
+        </form><br/>
+    }
+
+    @foreach (var moder in Model.Moders)
+    {
+        <p>@moder  Модератор</p>
+        <form method="post" asp-controller="Administration" asp-action="RemoveRoles" asp-route-id="@moder.Id">
+            <input type="submit" class="btn" value="удалить" onclick="if (confirm('Снять роли пользователя @moder.UserName?')) { return true;} else{event.stopPropagation(); event.preventDefault();};" />
+        </form><br />
+    }
+
+    <a class="green" asp-controller="Administration" asp-action="Roles">все роли</a>
+    <a class="green" asp-controller="Administration" asp-action="ProductsManage">управление продуктами</a>
+    
+</div>

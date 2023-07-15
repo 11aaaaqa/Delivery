@@ -1,0 +1,27 @@
+﻿@model Delivery.Models.Reg.Register
+<link rel="stylesheet" href="~/css/Login.css" />
+<link rel="stylesheet" href="~/css/Button.css" />
+<div class="form-center">
+    <h2>Зарегистрироваться</h2>
+    <form method="post" asp-controller="Account" asp-action="Register">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="UserName"></label><br/>
+            <input class="inpt" asp-for="UserName"/>
+            <span asp-validation-for="UserName"></span>
+        </div>
+        <div>
+            <label asp-for="Password"></label><br/>
+            <input class="inpt" asp-for="Password"/>
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label asp-for="PasswordConfirm"></label><br/>
+            <input class="inpt" asp-for="PasswordConfirm"/>
+            <span asp-validation-for="PasswordConfirm"></span>
+        </div>
+        <div>
+            <br/><input type="submit" class="btn" value="Зарегистрироваться"/>
+        </div>
+    </form>
+</div>

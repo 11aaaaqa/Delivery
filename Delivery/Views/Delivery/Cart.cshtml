@@ -1,0 +1,26 @@
+﻿<link rel="stylesheet" href="~/css/Button.css" />
+<div>
+    <h4>Денег на счете: @ViewBag.money руб</h4><br />
+    @if (ViewBag.totalPrice != 0)
+    {
+        @foreach (var x in ViewBag.products)
+        {
+            <h4>@x.Product.ProductName</h4>
+            <h5>Цена: @x.Product.Price руб</h5>
+            <h5>Количество: @x.Quantity</h5>
+            <form method="post" asp-controller="Delivery" asp-action="DeleteFromCart">
+                <input type="hidden" name="id" value="@x.Product.Id" />
+                <input type="submit" class="btn" value="удалить из корзины" />
+            </form>
+        }
+
+        <br /><h4>К оплате: @ViewBag.totalPrice рублей</h4>
+        <form method="post" asp-controller="Delivery" asp-action="Order" onclick="if (confirm('Вы действительно хотите заказать доставку?')) { return true; } else { event.stopPropagation();event.preventDefault(); };">
+            <input type="submit" class="btn" value="заказать" />
+        </form>
+    }
+    else
+    {
+        <h4>Корзина пуста</h4>
+    }
+</div>

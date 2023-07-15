@@ -1,0 +1,9 @@
+﻿@model IOrderedEnumerable<Delivery.Models.History.DepositsHistory>
+<link rel="stylesheet" href="~/css/HighlightDiv.css" />
+<div class="highlight">
+    @foreach (var deposits in Model)
+    {
+        <h4>@deposits.Amount руб</h4>
+        <h5>Дата: @deposits.Date</h5><br/>
+    }
+</div>
